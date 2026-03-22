@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import events from '../content/events.json'
+import events from '../../content/events.json'
 
 export default function EventPage() {
   const { id } = useParams()

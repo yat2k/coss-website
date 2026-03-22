@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import site from '../content/site.json'
-import DailyQuiz from '../components/DailyQuiz/DailyQuiz'
+import site from '../../content/site.json'
+import DailyQuiz from '../../components/DailyQuiz/DailyQuiz'
 import './Home.css'
 
 export default function Home() {

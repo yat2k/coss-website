@@ -1,3 +1,5 @@
+import ResourceCard from '../../components/ResourceCard/ResourceCard'
+
 export default function Resources() {
   return (
     <section className="resources container">
@@ -44,6 +46,3 @@ export default function Resources() {
     </section>
   )
 }
-
-import ResourceCard from '../components/ResourceCard/ResourceCard'
-
