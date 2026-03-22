@@ -1,55 +1,124 @@
+import { useState } from 'react'
 import './Events.css'
 
+const EVENTS = [
+  { name: 'ARVO Annual Meeting', dates: '3–7 May 2026', dateRange: [{ month: 5, days: [3, 4, 5, 6, 7] }], url: 'https://www.arvo.org/annual-meeting' },
+  { name: 'RCOphth Annual Congress', dates: '18–21 May 2026', dateRange: [{ month: 5, days: [18, 19, 20, 21] }], url: 'https://www.rcophth.ac.uk/events-courses/annual-congress/' },
+  { name: 'EGS Congress', dates: '30 May–2 Jun 2026', dateRange: [{ month: 5, days: [30, 31] }, { month: 6, days: [1, 2] }], url: 'https://egscongress.org/' },
+  { name: 'BOPSS Annual Meeting', dates: '17–19 Jun 2026', dateRange: [{ month: 6, days: [17, 18, 19] }], url: 'https://www.bopss.co.uk/meetings/bopss-2026-sheffield/' },
+  { name: 'WOC 2026', dates: '26–29 Jun 2026', dateRange: [{ month: 6, days: [26, 27, 28, 29] }], url: 'https://icowoc.org/' },
+  { name: 'Oxford Ophthalmological Congress', dates: '6–8 Jul 2026', dateRange: [{ month: 7, days: [6, 7, 8] }], url: 'https://www.ooc.uk.com/' },
+  { name: 'BEECS Annual Meeting', dates: 'TBC — Sep 2026', dateRange: [], url: 'https://beecs.co.uk/' },
+  { name: 'ESCRS Congress', dates: '11–15 Sep 2026', dateRange: [{ month: 9, days: [11, 12, 13, 14, 15] }], url: 'https://congress.escrs.org/' },
+  { name: 'EURETINA Congress', dates: '1–4 Oct 2026', dateRange: [{ month: 10, days: [1, 2, 3, 4] }], url: 'https://euretina.org/vienna-2026/' },
+  { name: 'AAO Annual Meeting', dates: '9–12 Oct 2026', dateRange: [{ month: 10, days: [9, 10, 11, 12] }], url: 'https://www.aao.org/annual-meeting' },
+  { name: 'BIPOSA Annual Meeting', dates: 'TBC — Oct 2026', dateRange: [], url: 'https://biposa.org/' },
+  { name: 'BEAVRS Annual Meeting', dates: '5–6 Nov 2026', dateRange: [{ month: 11, days: [5, 6] }], url: 'https://beavrs.org/' },
+]
+
+function getEventForDate(month, day) {
+  return EVENTS.find(event => 
+    event.dateRange.some(dr => dr.month === month && dr.days.includes(day))
+  )
+}
+
+function CalendarMonth({ month, year, onPrevMonth, onNextMonth }) {
+  const firstDay = new Date(year, month - 1, 1).getDay()
+  const daysInMonth = new Date(year, month, 0).getDate()
+  const [hoveredDate, setHoveredDate] = useState(null)
+
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+  const dates = []
+  for (let i = 0; i < firstDay; i++) {
+    dates.push(null)
+  }
+  for (let i = 1; i <= daysInMonth; i++) {
+    dates.push(i)
+  }
+
+  return (
+    <div className="calendar-month">
+      <div className="calendar-header">
+        <h3 className="month-title">{monthNames[month - 1]} {year}</h3>
+        <div className="nav-buttons">
+          <button className="nav-prev" onClick={onPrevMonth} aria-label="Previous month">
+            ←
+          </button>
+          <button className="nav-next" onClick={onNextMonth} aria-label="Next month">
+            →
+          </button>
+        </div>
+      </div>
+      
+      <div className="calendar-weekdays">
+        {dayNames.map(day => (
+          <div key={day} className="weekday">{day}</div>
+        ))}
+      </div>
+
+      <div className="calendar-days">
+        {dates.map((day, idx) => {
+          const event = day ? getEventForDate(month, day) : null
+          const isToday = new Date().getMonth() === month - 1 && new Date().getDate() === day
+          
+          return (
+            <div
+              key={idx}
+              className={`calendar-day ${event ? 'has-event' : ''} ${isToday ? 'today' : ''}`}
+              onMouseEnter={() => day && setHoveredDate(day)}
+              onMouseLeave={() => setHoveredDate(null)}
+              onClick={() => event && window.open(event.url, '_blank')}
+            >
+              {day && <span className="day-number">{day}</span>}
+              
+              {event && hoveredDate === day && (
+                <div className="event-tooltip">
+                  <div className="tooltip-name">{event.name}</div>
+                  <div className="tooltip-dates">{event.dates}</div>
+                  <a href={event.url} target="_blank" rel="noreferrer" className="tooltip-link" onClick={(e) => e.stopPropagation()}>
+                    Visit Website →
+                  </a>
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function Events() {
+  const currentMonth = new Date().getMonth() + 1
+  const [displayMonth, setDisplayMonth] = useState(currentMonth)
+
+  const handlePrevMonth = () => {
+    setDisplayMonth(prev => prev === 1 ? 12 : prev - 1)
+  }
+
+  const handleNextMonth = () => {
+    setDisplayMonth(prev => prev === 12 ? 1 : prev + 1)
+  }
+
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
   return (
     <section className="events container">
-      <div className="events-grid">
-        <main className="events-main">
-          <h1>Upcoming Events</h1>
-          <h2 className="section-heading section-heading--green">Cambridge Ophthalmology Society Events</h2>
+      <div className="events-header">
+        <h1>2026 Ophthalmology Events Calendar</h1>
+        <p>Hover over highlighted dates to see event details. Click to visit the event website.</p>
+      </div>
 
-          <section className="event-card">
-            <h2>Specialty Trainee Symposium – February 2026</h2>
-            <p>Explore training pathways, hear from specialty trainees, and get insider career advice.</p>
-          </section>
+      <div className="calendar-container">
+        <CalendarMonth month={displayMonth} year={2026} onPrevMonth={handlePrevMonth} onNextMonth={handleNextMonth} />
+      </div>
 
-          <section className="event-card">
-            <h2>Duke Elder Lecture Series – March 2026 onwards</h2>
-            <p>Our flagship lecture series supporting students preparing for the undergraduate ophthalmology exam.</p>
-          </section>
-
-          <h2 className="section-heading section-heading--blue">National &amp; International Ophthalmology Events</h2>
-
-          <section className="event-card">
-            <h3>UKNOS Conference – 15th–17th April 2026</h3>
-            <p>National student ophthalmology conference with lectures, workshops, and networking opportunities.</p>
-          </section>
-
-          <section className="event-card">
-            <h3>ARVO Annual Meeting – 1st–5th May 2026</h3>
-            <p>Leading international vision science and research conference.</p>
-          </section>
-
-          <section className="event-card">
-            <h3>RCOphth Congress – 10th–12th June 2026</h3>
-            <p>UK-based professional congress featuring talks, workshops, and the latest research.</p>
-          </section>
-        </main>
-
-        <aside className="events-side">
-          <div className="side-card">
-            <h4>Connect with Fellow Students</h4>
-            <p>Planning to attend any events? Add your name and CRSid to our Google Sheet to find like-minded Cambridge students and coordinate attendance.</p>
-            <p><a className="button" href="#" target="_blank" rel="noreferrer">Open events Google Sheet</a></p>
-          </div>
-
-          <div className="side-card">
-            <h4>Stay Up to Date</h4>
-            <p>Want to hear about upcoming events and opportunities from the Cambridge Ophthalmology Society? Sign up for our mailing list below!</p>
-            <p>Join the Mailing List: Submit your details via our Google Form — simply fill out your name, email, level of training, and affiliated institution to stay in the loop.</p>
-            <p><a className="button muted" href="#" target="_blank" rel="noreferrer">Open mailing list form</a></p>
-          </div>
-        </aside>
+      <div className="conference-signup">
+        <h2>Attending a conference?</h2>
+        <p>If you're planning to attend any of the conferences listed above, log in with your Cambridge email and add your CRSID to our attendance sheet - so other Cambridge students going to the same meeting can reach out.</p>
+        <a href="#" className="signup-link">Sign up here →</a>
       </div>
     </section>
   )

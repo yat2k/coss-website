@@ -1,7 +1,7 @@
 .site-header {
   background: var(--brand-green);
   color: #fff;
-  padding: 12px 0;
+  padding: 12px 1rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -9,7 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .brand {
   display: inline-flex;
@@ -35,9 +37,9 @@
   text-decoration: none;
 }
 
-.site-header nav { display: flex; align-items: center; gap: 12px }
+.site-header nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap }
 .nav-item { position: relative; }
-.nav-link { color: #fff; text-decoration: none; margin-left: 0 }
+.nav-link { color: #fff; text-decoration: none; margin-left: 0; font-size: 0.95rem }
 
 .dropdown-menu {
   position: absolute;
@@ -63,9 +65,52 @@
 .nav-dropdown:focus-within .dropdown-menu { display: block; }
 
 /* make dropdown adapt on small screens (stack) */
-@media (max-width: 800px) {
-  .dropdown-menu { position: static; box-shadow: none; background: transparent; padding: 0 }
-  .dropdown-menu li a { padding: 0.25rem 0; color: #fff }
+@media (max-width: 768px) {
+  .site-header {
+    padding: 10px 0.75rem;
+  }
+  .header-inner {
+    gap: 8px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .site-header nav a {
+    margin-left: 12px;
+    font-size: 0.9rem;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    min-width: auto;
+  }
+  .dropdown-menu li a {
+    padding: 0.25rem 0;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 8px 0.5rem;
+  }
+  .brand {
+    gap: 6px;
+  }
+  .brand-logo {
+    height: 28px;
+    width: 28px;
+  }
+  .site-header nav a {
+    margin-left: 8px;
+    font-size: 0.8rem;
+  }
+  .nav-item {
+    font-size: 0.8rem;
+  }
 }
 
 .site-header .brand {
