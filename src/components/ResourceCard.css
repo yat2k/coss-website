@@ -1,0 +1,19 @@
+.resource-card {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.resource-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(16,24,40,0.08); }
+.rc-image { height: 140px; background-size: cover; background-position: center; }
+.rc-body { padding: 0.75rem; }
+.rc-title { display:flex; align-items:center; gap:0.5rem }
+.rc-title h3 { margin: 0; font-size: 1.05rem; }
+.rc-desc { margin: 0.5rem 0 0 0; color: var(--muted); font-size: 0.95rem }
+.rc-badge { background: #ffecb8; color: #7a4b00; font-weight:700; padding: 0.18rem 0.5rem; border-radius:999px; font-size:0.8rem }
+
+.resources-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem; }

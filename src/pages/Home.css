@@ -1,0 +1,22 @@
+.home-grid {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.home-main {
+  flex: 1 1 auto;
+}
+
+/* keep the daily quiz a fixed column on wide screens so it doesn't get squashed */
+.daily-quiz {
+  flex: 0 0 320px;
+}
+
+.home-main h1 {
+  margin-top: 0;
+}
+
+@media (max-width: 800px) {
+  .home-grid { display: block; }
+  .daily-quiz { margin-top: 1.25rem; width: 100%; flex: none; }
+}

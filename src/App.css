@@ -1,0 +1,81 @@
+/* Make root full width; use .container to center page content */
+#root {
+  width: 100%;
+  padding: 0;
+}
+
+/* Reusable centered container */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--content-bg);
+  color: var(--text-primary);
+}
+
+/* Prevent header from inheriting the white container background */
+.site-header .container {
+  background: transparent;
+  padding: 0 2rem;
+}
+
+/* Footer full-bleed with centered inner container */
+.site-footer {
+  background: var(--content-bg);
+  color: var(--text-primary);
+  padding: 12px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.site-footer .container {
+  background: transparent;
+  padding: 0 2rem;
+}
+
+/* Make the app fill the viewport and let main grow */
+html, body, #root, .app-root {
+  height: 100%;
+}
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 1 auto;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

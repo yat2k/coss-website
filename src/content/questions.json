@@ -1,0 +1,123 @@
+
+[
+	{
+		"id": 1,
+		"question": "Which structure of the eye refracts the most light?",
+		"choices": [
+			{ "id": "a", "text": "Cornea" },
+			{ "id": "b", "text": "Lens" },
+			{ "id": "c", "text": "Retina" },
+			{ "id": "d", "text": "Iris" }
+		],
+		"answerId": "a",
+		"explanation": "The cornea provides the majority of the eye's refractive power."
+	},
+	{
+		"id": 2,
+		"question": "Which cranial nerve innervates the lateral rectus muscle?",
+		"choices": [
+			{ "id": "a", "text": "Oculomotor (III)" },
+			{ "id": "b", "text": "Trochlear (IV)" },
+			{ "id": "c", "text": "Abducens (VI)" },
+			{ "id": "d", "text": "Trigeminal (V)" }
+		],
+		"answerId": "c",
+		"explanation": "The abducens nerve (VI) innervates the lateral rectus, which abducts the eye."
+	},
+	{
+		"id": 3,
+		"question": "Which chart is commonly used for measuring distance visual acuity?",
+		"choices": [
+			{ "id": "a", "text": "Snellen chart" },
+			{ "id": "b", "text": "Ishihara plates" },
+			{ "id": "c", "text": "Amsler grid" },
+			{ "id": "d", "text": "Humphrey field" }
+		],
+		"answerId": "a",
+		"explanation": "The Snellen chart is the standard test for distance visual acuity."
+	},
+	{
+		"id": 4,
+		"question": "What is the typical normal range for intraocular pressure (IOP) in mmHg?",
+		"choices": [
+			{ "id": "a", "text": "0–5 mmHg" },
+			{ "id": "b", "text": "6–10 mmHg" },
+			{ "id": "c", "text": "10–21 mmHg" },
+			{ "id": "d", "text": "22–30 mmHg" }
+		],
+		"answerId": "c",
+		"explanation": "Normal intraocular pressure is typically around 10–21 mmHg."
+	},
+	{
+		"id": 5,
+		"question": "Optic disc cupping on fundoscopy is classically associated with which condition?",
+		"choices": [
+			{ "id": "a", "text": "Cataract" },
+			{ "id": "b", "text": "Glaucoma" },
+			{ "id": "c", "text": "Macular degeneration" },
+			{ "id": "d", "text": "Diabetic retinopathy" }
+		],
+		"answerId": "b",
+		"explanation": "Glaucoma causes optic nerve damage and characteristic optic disc cupping."
+	},
+	{
+		"id": 6,
+		"question": "Which photoreceptor cells are primarily responsible for colour vision?",
+		"choices": [
+			{ "id": "a", "text": "Rods" },
+			{ "id": "b", "text": "Cones" },
+			{ "id": "c", "text": "Ganglion cells" },
+			{ "id": "d", "text": "Bipolar cells" }
+		],
+		"answerId": "b",
+		"explanation": "Cones mediate colour vision, while rods are more sensitive in low light."
+	},
+	{
+		"id": 7,
+		"question": "What is the most common cause of reversible blindness worldwide?",
+		"choices": [
+			{ "id": "a", "text": "Glaucoma" },
+			{ "id": "b", "text": "Cataract" },
+			{ "id": "c", "text": "Trachoma" },
+			{ "id": "d", "text": "Age-related macular degeneration" }
+		],
+		"answerId": "b",
+		"explanation": "Cataract is the leading reversible cause of blindness globally and can be treated surgically."
+	},
+	{
+		"id": 8,
+		"question": "Fluorescein angiography is primarily used to visualise which of the following?",
+		"choices": [
+			{ "id": "a", "text": "Corneal surface" },
+			{ "id": "b", "text": "Conjunctiva" },
+			{ "id": "c", "text": "Retinal and choroidal vasculature" },
+			{ "id": "d", "text": "Lens capsule" }
+		],
+		"answerId": "c",
+		"explanation": "Fluorescein angiography visualises the retinal and choroidal blood vessels."
+	},
+	{
+		"id": 9,
+		"question": "Which organism is the causative agent of trachoma?",
+		"choices": [
+			{ "id": "a", "text": "Staphylococcus aureus" },
+			{ "id": "b", "text": "Chlamydia trachomatis" },
+			{ "id": "c", "text": "Pseudomonas aeruginosa" },
+			{ "id": "d", "text": "Neisseria gonorrhoeae" }
+		],
+		"answerId": "b",
+		"explanation": "Trachoma is caused by Chlamydia trachomatis and is a major infectious cause of blindness."
+	},
+	{
+		"id": 10,
+		"question": "What is the preferred initial treatment for acute bacterial conjunctivitis?",
+		"choices": [
+			{ "id": "a", "text": "Topical antivirals" },
+			{ "id": "b", "text": "Topical antibiotics" },
+			{ "id": "c", "text": "Oral antibiotics" },
+			{ "id": "d", "text": "Topical steroids" }
+		],
+		"answerId": "b",
+		"explanation": "Acute bacterial conjunctivitis is commonly treated with topical antibiotic drops as first-line therapy."
+	}
+]

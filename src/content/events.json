@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Intro to Ophthalmology: Clinical Skills Workshop",
+    "date": "2025-12-03",
+    "summary": "A hands-on workshop covering basic ophthalmic clinical skills.",
+    "content": "<p>Join us for a practical session covering slit-lamp, fundoscopy and basic eye examination techniques. Open to all students.</p>"
+  },
+  {
+    "id": 2,
+    "title": "Career Panel: Training Pathways",
+    "date": "2026-01-20",
+    "summary": "Panel discussion with trainees and consultants about ophthalmology training.",
+    "content": "<p>Hear from current ophthalmology trainees and consultants about their training pathway, applications, and tips for getting experience.</p>"
+  }
+]
