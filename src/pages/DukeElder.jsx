@@ -1,4 +1,4 @@
-import DailyQuiz from '../components/DailyQuiz'
+import DailyQuiz from '../components/DailyQuiz/DailyQuiz'
 
 export default function DukeElder() {
   return (

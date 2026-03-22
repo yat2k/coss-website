@@ -45,5 +45,5 @@ export default function Resources() {
   )
 }
 
-import ResourceCard from '../components/ResourceCard'
+import ResourceCard from '../components/ResourceCard/ResourceCard'
 

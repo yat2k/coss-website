@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './DailyQuiz.css'
-import allQuestions from '../content/questions.json'
+import allQuestions from '../../content/questions.json'
 
 // Use the first five questions from the content pool
 const DAILY_COUNT = 5

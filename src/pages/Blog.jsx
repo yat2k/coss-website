@@ -1,4 +1,4 @@
-import ResourceCard from '../components/ResourceCard'
+import ResourceCard from '../components/ResourceCard/ResourceCard'
 
 const samplePosts = [
   { id: 1, title: 'How we built the COSS quiz', date: '2025-11-20' },
