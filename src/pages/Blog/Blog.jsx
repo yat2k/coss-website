@@ -1,4 +1,4 @@
-import ResourceCard from '../../components/ResourceCard/ResourceCard'
+import './Blog.css'
 
 const samplePosts = [
   { id: 1, title: 'How we built the COSS quiz', date: '2025-11-20' },
@@ -9,7 +9,13 @@ export default function Blog() {
   return (
     <section className="container">
       <h2>COSS Blog</h2>
-      <p>Latest articles and updates from the society, ordered by date.</p>
+      <p>This space is for Cambridge ophthalmology students, by Cambridge ophthalmology students. Have an interesting case, a reflection on a placement, or thoughts on a career in ophthalmology? We'd love to hear from you.</p>
+      
+      <div style={{ marginBottom: '2rem' }}>
+        <a href="#signup" className="cta-link">
+          Write for us →
+        </a>
+      </div>
 
       <div style={{ display: 'grid', gap: '1rem' }}>
         {samplePosts.map((p) => (

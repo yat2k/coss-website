@@ -1,0 +1,26 @@
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: var(--brand-green);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 150ms ease;
+  margin-bottom: 1rem;
+}
+
+.cta-link:hover {
+  gap: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 120, 70, 0.25);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .cta-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
