@@ -16,8 +16,8 @@ export default function Diseases() {
           Contribute a disease →
         </a>
       </div>
-
-      <div style={{ display: 'grid', gap: '1rem' }}>
+{/* TODO: Implement disease post display */}
+      {/* <div style={{ display: 'grid', gap: '1rem' }}>
         {sample.map((s) => (
           <article key={s.id} className="card">
             <h3>{s.title}</h3>
@@ -25,7 +25,7 @@ export default function Diseases() {
             <p>Brief summary and links to further reading.</p>
           </article>
         ))}
-      </div>
+      </div> */}
     </section>
   )
 }

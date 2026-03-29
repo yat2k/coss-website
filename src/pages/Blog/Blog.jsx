@@ -16,8 +16,8 @@ export default function Blog() {
           Write for us →
         </a>
       </div>
-
-      <div style={{ display: 'grid', gap: '1rem' }}>
+      {/* TODO: Implement blog post display */}
+      {/* <div style={{ display: 'grid', gap: '1rem' }}>
         {samplePosts.map((p) => (
           <article key={p.id} className="card">
             <h3>{p.title}</h3>
@@ -25,7 +25,7 @@ export default function Blog() {
             <p>Summary of the article. Click to read more.</p>
           </article>
         ))}
-      </div>
+      </div> */}
     </section>
   )
 }
