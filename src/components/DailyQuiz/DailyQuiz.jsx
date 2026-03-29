@@ -18,6 +18,7 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   const [streak, setStreak] = useState(0)
   const [streakUpdatedThisSession, setStreakUpdatedThisSession] = useState(false)
   const [answers, setAnswers] = useState(() => Array(DAILY_COUNT).fill(null))
+  const [answeredQuestions, setAnsweredQuestions] = useState(new Set())
 
   const STREAK_KEY = 'coss_daily_quiz_streak'
 
@@ -102,13 +103,20 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   }, [questionData])
 
   const q = daily[index]
+  const isCurrentQuestionAnswered = answeredQuestions.has(index)
 
   function selectChoice(choiceId) {
+    // Don't allow changing answer if already answered
+    if (isCurrentQuestionAnswered) return
+
     setAnswers((prev) => {
       const copy = prev.slice()
       copy[index] = choiceId
       return copy
     })
+
+    // Mark this question as answered
+    setAnsweredQuestions((prev) => new Set([...prev, index]))
   }
 
   async function finalSubmit() {
@@ -166,6 +174,7 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
     setSubmitted(false)
     setScore(0)
     setFinished(false)
+    setAnsweredQuestions(new Set())
   }
 
   const style = topOffset ? { marginTop: `${topOffset}px` } : undefined
@@ -182,13 +191,24 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
             <ul className="dq-choices">
               {q.choices.map((c) => (
                 <li key={c.id}>
-                  <label className={`dq-choice ${answers[index] !== null && c.id === q.answerId ? 'correct' : ''} ${answers[index] !== null && answers[index] === c.id && c.id !== q.answerId ? 'incorrect' : ''}`}>
+                  <label
+                    className={`dq-choice ${
+                      isCurrentQuestionAnswered && c.id === q.answerId ? 'correct' : ''
+                    } ${
+                      isCurrentQuestionAnswered &&
+                      answers[index] === c.id &&
+                      c.id !== q.answerId
+                        ? 'incorrect'
+                        : ''
+                    } ${isCurrentQuestionAnswered ? 'locked' : ''}`}
+                  >
                     <input
                       type="radio"
                       name={`quiz-${q.id}`}
                       value={c.id}
                       checked={answers[index] === c.id}
                       onChange={() => selectChoice(c.id)}
+                      disabled={isCurrentQuestionAnswered}
                     />
                     <span className="dq-choice-text">{c.text}</span>
                   </label>
@@ -196,23 +216,27 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
               ))}
             </ul>
             <div className="dq-actions">
-              <button className="dq-retry" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={index === 0}>
+              <button
+                className="dq-retry"
+                onClick={() => setIndex((i) => Math.max(0, i - 1))}
+                disabled={index === 0}
+              >
                 Previous
               </button>
 
               {index + 1 < daily.length ? (
-                <button className="dq-submit" onClick={() => setIndex((i) => i + 1)}>
+                <button className="dq-submit" onClick={() => setIndex((i) => i + 1)} disabled={!isCurrentQuestionAnswered}>
                   Next
                 </button>
               ) : (
-                <button className="dq-submit" onClick={finalSubmit} disabled={answers.some((a) => a == null)}>
+                <button className="dq-submit" onClick={finalSubmit} disabled={!isCurrentQuestionAnswered}>
                   Submit Quiz
                 </button>
               )}
             </div>
 
-            {/* show explanation while reviewing or if answered */}
-            {answers[index] != null && q.explanation && (
+            {/* show explanation after answered */}
+            {isCurrentQuestionAnswered && q.explanation && (
               <p className="dq-explanation">{q.explanation}</p>
             )}
           </>

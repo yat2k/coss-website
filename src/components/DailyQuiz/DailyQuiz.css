@@ -23,6 +23,8 @@
 .dq-choice input { margin-right: 0.5rem; }
 .dq-choice.correct { background: rgba(37,150,190,0.06); }
 .dq-choice.incorrect { background: rgba(255, 80, 80, 0.06); }
+.dq-choice.locked input { cursor: not-allowed; }
+.dq-choice.locked input:disabled { opacity: 0.6; }
 .dq-actions { display: flex; gap: 0.5rem; align-items: center; }
 .dq-submit { background: var(--brand-green); color: #fff; border: none; padding: 0.45rem 0.75rem; border-radius: 6px; cursor: pointer; }
 .dq-submit:disabled { opacity: 0.5; cursor: not-allowed; }
