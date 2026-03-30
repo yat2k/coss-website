@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './DailyQuiz.css'
 import allQuestions from '../../content/questions.json'
+import { endpoints } from '../../utils/api'
 
 // Simple analytics tracking - more robust than hooks
 function trackAnalyticsEvent(eventType, page, data = {}) {
@@ -20,7 +21,7 @@ function trackAnalyticsEvent(eventType, page, data = {}) {
       data,
     }
 
-    fetch('http://localhost:3001/analytics/track', {
+    fetch(endpoints.ANALYTICS_TRACK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -171,7 +172,7 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
     // send each result to backend (fire in parallel)
     try {
       const sends = results.map((r) =>
-        fetch('http://localhost:3001/submit', {
+        fetch(endpoints.SUBMIT_QUIZ, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ questionId: r.questionId, gotItRight: r.gotItRight }),

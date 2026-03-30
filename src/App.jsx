@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import './App.css'
+import { endpoints } from './utils/api'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
@@ -33,7 +34,7 @@ function trackPageView(pathname) {
       data: {},
     }
 
-    fetch('http://localhost:3001/analytics/track', {
+    fetch(endpoints.ANALYTICS_TRACK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
