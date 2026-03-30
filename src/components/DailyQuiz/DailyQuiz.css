@@ -3,6 +3,7 @@
   box-sizing: border-box;
   margin-top: 0;
   align-self: flex-start;
+  
 }
 .dq-title {
   margin: 0 0 0.5rem 0;
@@ -11,7 +12,9 @@
 .dq-card {
   border: 1px solid rgba(0,0,0,0.06);
   padding: 1rem;
-  background: #fff;
+  /* background: #fff; */
+  background: linear-gradient(135deg, rgba(226, 249, 230, 0.5), rgba(225, 237, 255, 0.5));
+
   border-radius: 6px;
 }
 .dq-question {
@@ -21,8 +24,10 @@
 .dq-choices { list-style: none; padding: 0; margin: 0 0 1rem 0; }
 .dq-choice { display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0; }
 .dq-choice input { margin-right: 0.5rem; }
-.dq-choice.correct { background: rgba(37,150,190,0.06); }
-.dq-choice.incorrect { background: rgba(255, 80, 80, 0.06); }
+.dq-choice.correct { background: rgba(18, 162, 214, 0.2); }
+.dq-choice.incorrect { background: rgba(253, 17, 17, 0.2); }
+.dq-choice.locked input { cursor: not-allowed; }
+.dq-choice.locked input:disabled { opacity: 0.6; }
 .dq-actions { display: flex; gap: 0.5rem; align-items: center; }
 .dq-submit { background: var(--brand-green); color: #fff; border: none; padding: 0.45rem 0.75rem; border-radius: 6px; cursor: pointer; }
 .dq-submit:disabled { opacity: 0.5; cursor: not-allowed; }

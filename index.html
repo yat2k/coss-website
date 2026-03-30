@@ -5,9 +5,73 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>coss-website</title>
+    <style>
+      #adblock-banner {
+        display: none;
+        background: #fff3cd;
+        border-bottom: 2px solid #ffc107;
+        color: #856404;
+        padding: 1rem;
+        text-align: center;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        z-index: 9999;
+        position: relative;
+      }
+      #adblock-banner.show {
+        display: block;
+      }
+      #adblock-banner button {
+        margin-left: 1rem;
+        padding: 0.4rem 0.8rem;
+        background: #ffc107;
+        border: none;
+        color: #856404;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 4px;
+      }
+      #adblock-banner button:hover {
+        background: #ffb300;
+      }
+    </style>
   </head>
   <body>
+    <div id="adblock-banner">
+      <strong>⚠️ Ad Blocker Detected:</strong> Some features may not work properly. Please disable your ad blocker for this site.
+      <button onclick="document.getElementById('adblock-banner').classList.remove('show')">✕ Dismiss</button>
+    </div>
     <div id="root"></div>
+    <script>
+      // Detect ad blocker at root level before React loads
+      (function() {
+        var detected = false;
+        
+        // Method 1: Try to fetch Google Analytics script
+        fetch('https://www.google-analytics.com/ga.js', { method: 'HEAD', mode: 'no-cors' })
+          .catch(() => {
+            detected = true;
+          });
+        
+        // Method 2: Check if common ad/tracking IDs are blocked
+        var testImg = new Image();
+        testImg.onerror = function() {
+          detected = true;
+        };
+        testImg.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+        
+        // Show banner after a brief delay if detection triggered
+        setTimeout(function() {
+          if (detected) {
+            var banner = document.getElementById('adblock-banner');
+            if (banner) {
+              banner.classList.add('show');
+            }
+          }
+        }, 500);
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

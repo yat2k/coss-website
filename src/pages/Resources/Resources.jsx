@@ -1,3 +1,5 @@
+import ResourceCard from '../../components/ResourceCard/ResourceCard'
+
 export default function Resources() {
   return (
     <section className="resources container">
@@ -31,7 +33,6 @@ export default function Resources() {
           title="Duke Elder Resources"
           description="Selected Duke Elder highlights with the daily quiz on the side."
           image="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?w=1200&q=60"
-          badge="Classic"
         />
 
         <ResourceCard
@@ -44,6 +45,3 @@ export default function Resources() {
     </section>
   )
 }
-
-import ResourceCard from '../components/ResourceCard'
-
