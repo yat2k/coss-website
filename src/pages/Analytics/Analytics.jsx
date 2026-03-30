@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Analytics.css'
-
-const API_BASE = typeof window !== 'undefined' && window.location.hostname === 'localhost' 
-  ? 'http://localhost:3001'
-  : '/api'
+import { API_BASE } from '../../utils/api'
 
 export default function Analytics() {
   const [analytics, setAnalytics] = useState(null)
