@@ -2,6 +2,34 @@ import { useState, useEffect } from 'react'
 import './DailyQuiz.css'
 import allQuestions from '../../content/questions.json'
 
+// Simple analytics tracking - more robust than hooks
+function trackAnalyticsEvent(eventType, page, data = {}) {
+  try {
+    if (typeof window === 'undefined') return
+    
+    let sessionId = localStorage.getItem('coss_session_id')
+    if (!sessionId) {
+      sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+      localStorage.setItem('coss_session_id', sessionId)
+    }
+
+    const payload = {
+      sessionId,
+      eventType,
+      page: page || 'daily-quiz',
+      data,
+    }
+
+    fetch('http://localhost:3001/analytics/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(() => {}) // silently fail
+  } catch {
+    // ignore analytics errors
+  }
+}
+
 // Use the first five questions from the content pool
 const DAILY_COUNT = 5
 
@@ -10,15 +38,13 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   const daily = pool.slice(0, DAILY_COUNT)
 
   const [index, setIndex] = useState(0)
-  const [selected, setSelected] = useState(null)
-  const [submitted, setSubmitted] = useState(false)
   const [score, setScore] = useState(0)
   const [finished, setFinished] = useState(false)
-  const [remoteStats, setRemoteStats] = useState(null)
   const [streak, setStreak] = useState(0)
   const [streakUpdatedThisSession, setStreakUpdatedThisSession] = useState(false)
   const [answers, setAnswers] = useState(() => Array(DAILY_COUNT).fill(null))
   const [answeredQuestions, setAnsweredQuestions] = useState(new Set())
+  const [quizStarted, setQuizStarted] = useState(false)
 
   const STREAK_KEY = 'coss_daily_quiz_streak'
 
@@ -88,6 +114,14 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
     setStreak(s.streak || 0)
   }, [])
 
+  // Track quiz start
+  useEffect(() => {
+    if (!quizStarted && daily.length > 0) {
+      trackAnalyticsEvent('quiz_start', 'daily-quiz', { questionCount: daily.length })
+      setQuizStarted(true)
+    }
+  }, [daily.length, quizStarted])
+
   // reset answers length when daily set changes
   useEffect(() => {
     setAnswers(Array(daily.length).fill(null))
@@ -96,8 +130,6 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   useEffect(() => {
     // reset if questionData changes or pool changes
     setIndex(0)
-    setSelected(null)
-    setSubmitted(false)
     setScore(0)
     setFinished(false)
   }, [questionData])
@@ -117,6 +149,9 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
 
     // Mark this question as answered
     setAnsweredQuestions((prev) => new Set([...prev, index]))
+
+    // Track individual answer submission
+    trackAnalyticsEvent('quiz_answer_submit', 'daily-quiz', { questionIndex: index, questionId: q?.id })
   }
 
   async function finalSubmit() {
@@ -144,37 +179,26 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
           .then((resp) => (resp.ok ? resp.json() : null))
           .catch(() => null)
       )
-      const responses = await Promise.all(sends)
-      setRemoteStats(responses)
-    } catch (err) {
-      console.warn('Could not send quiz results to server', err)
+      await Promise.all(sends)
+    } catch {
+      console.warn('Could not send quiz results to server')
     }
 
     // update streak only when all questions answered
     updateStreakIfNeeded()
 
-    setFinished(true)
-  }
+    // Track quiz completion
+    trackAnalyticsEvent('quiz_complete', 'daily-quiz', { score: correctCount, totalQuestions: daily.length })
 
-  function next() {
-    const nextIndex = index + 1
-    if (nextIndex >= daily.length) {
-      setFinished(true)
-    } else {
-      setIndex(nextIndex)
-      setSelected(null)
-      setSubmitted(false)
-      setRemoteStats(null)
-    }
+    setFinished(true)
   }
 
   function restart() {
     setIndex(0)
-    setSelected(null)
-    setSubmitted(false)
     setScore(0)
     setFinished(false)
     setAnsweredQuestions(new Set())
+    setQuizStarted(false)
   }
 
   const style = topOffset ? { marginTop: `${topOffset}px` } : undefined
