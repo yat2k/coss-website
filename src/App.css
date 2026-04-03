@@ -44,6 +44,33 @@ main {
   flex: 1 1 auto;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .site-header .container,
+  .site-footer .container {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.25rem 1rem;
+  }
+
+  .site-header .container,
+  .site-footer .container {
+    padding: 0 1rem;
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
