@@ -33,6 +33,64 @@ function trackAnalyticsEvent(eventType, page, data = {}) {
 
 // Use the first five questions from the content pool
 const DAILY_COUNT = 5
+const STREAK_KEY = 'coss_daily_quiz_streak'
+const UK_TIME_ZONE = 'Europe/London'
+
+function getUkDateKey(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: UK_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+
+  return formatter.format(date)
+}
+
+function addDaysToDateKey(dateKey, days) {
+  const [year, month, day] = dateKey.split('-').map(Number)
+  const utcDate = new Date(Date.UTC(year, month - 1, day))
+  utcDate.setUTCDate(utcDate.getUTCDate() + days)
+  return getUkDateKey(utcDate)
+}
+
+function loadStreakFromStorage() {
+  try {
+    const raw = localStorage.getItem(STREAK_KEY)
+    if (!raw) return { streak: 0, lastAttempt: null }
+    return JSON.parse(raw)
+  } catch (e) {
+    console.warn('Failed to load streak', e)
+    return { streak: 0, lastAttempt: null }
+  }
+}
+
+function saveStreakToStorage(data) {
+  try {
+    localStorage.setItem(STREAK_KEY, JSON.stringify(data))
+  } catch (e) {
+    console.warn('Failed to save streak', e)
+  }
+}
+
+function getResolvedStreak(stored, today = getUkDateKey()) {
+  const safeStreak = Number(stored?.streak) || 0
+  const lastAttempt = stored?.lastAttempt || null
+
+  if (!lastAttempt) {
+    return { streak: 0, lastAttempt: null, isTodayComplete: false }
+  }
+
+  if (lastAttempt === today) {
+    return { streak: safeStreak, lastAttempt, isTodayComplete: true }
+  }
+
+  if (addDaysToDateKey(lastAttempt, 1) === today) {
+    return { streak: safeStreak, lastAttempt, isTodayComplete: false }
+  }
+
+  return { streak: 0, lastAttempt, isTodayComplete: false }
+}
 
 export default function DailyQuiz({ questionData, topOffset = 0 }) {
   const pool = questionData ? [questionData] : allQuestions || []
@@ -47,62 +105,22 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   const [answeredQuestions, setAnsweredQuestions] = useState(new Set())
   const [quizStarted, setQuizStarted] = useState(false)
 
-  const STREAK_KEY = 'coss_daily_quiz_streak'
-
-  function formatDateOnly(d) {
-    const yyyy = d.getFullYear()
-    const mm = String(d.getMonth() + 1).padStart(2, '0')
-    const dd = String(d.getDate()).padStart(2, '0')
-    return `${yyyy}-${mm}-${dd}`
-  }
-
-  function loadStreakFromStorage() {
-    try {
-      const raw = localStorage.getItem(STREAK_KEY)
-      if (!raw) return { streak: 0, lastAttempt: null }
-      return JSON.parse(raw)
-    } catch (e) {
-      console.warn('Failed to load streak', e)
-      return { streak: 0, lastAttempt: null }
-    }
-  }
-
-  function saveStreakToStorage(data) {
-    try {
-      localStorage.setItem(STREAK_KEY, JSON.stringify(data))
-    } catch (e) {
-      console.warn('Failed to save streak', e)
-    }
-  }
-
-  // Determine streak update based on calendar days.
-  // - If last attempt is today: no change
-  // - If last attempt is yesterday: increment streak
-  // - Otherwise: reset to 1
   function updateStreakIfNeeded() {
     if (streakUpdatedThisSession) return
-    const now = new Date()
-    const today = formatDateOnly(now)
+    const today = getUkDateKey()
     const stored = loadStreakFromStorage()
-    const last = stored.lastAttempt
+    const resolved = getResolvedStreak(stored, today)
+    const last = resolved.lastAttempt
 
     if (last === today) {
-      // already attempted today
-      setStreak(stored.streak || 0)
+      setStreak(resolved.streak)
       setStreakUpdatedThisSession(true)
       return
     }
 
-    let newStreak = 1
-    if (last) {
-      const lastDate = new Date(last + 'T00:00:00')
-      const nextDay = new Date(lastDate)
-      nextDay.setDate(lastDate.getDate() + 1)
-      const nextDayStr = formatDateOnly(nextDay)
-      if (nextDayStr === today) {
-        newStreak = (stored.streak || 0) + 1
-      }
-    }
+    const newStreak = last && addDaysToDateKey(last, 1) === today
+      ? resolved.streak + 1
+      : 1
 
     const toSave = { streak: newStreak, lastAttempt: today }
     saveStreakToStorage(toSave)
@@ -111,8 +129,26 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   }
 
   useEffect(() => {
-    const s = loadStreakFromStorage()
-    setStreak(s.streak || 0)
+    function syncStreakState() {
+      const today = getUkDateKey()
+      const stored = loadStreakFromStorage()
+      const resolved = getResolvedStreak(stored, today)
+
+      setStreak(resolved.streak)
+      setStreakUpdatedThisSession(resolved.isTodayComplete)
+
+      if (resolved.streak !== (Number(stored?.streak) || 0)) {
+        saveStreakToStorage({
+          streak: resolved.streak,
+          lastAttempt: resolved.lastAttempt,
+        })
+      }
+    }
+
+    syncStreakState()
+    const intervalId = window.setInterval(syncStreakState, 60000)
+
+    return () => window.clearInterval(intervalId)
   }, [])
 
   // Track quiz start
