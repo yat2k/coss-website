@@ -32,6 +32,15 @@
 .dq-submit { background: var(--brand-green); color: #fff; border: none; padding: 0.45rem 0.75rem; border-radius: 6px; cursor: pointer; }
 .dq-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 .dq-retry { background: transparent; border: 1px solid rgba(0,0,0,0.08); padding: 0.35rem 0.6rem; border-radius: 6px; cursor: pointer; }
+.dq-restart {
+  background: var(--brand-green);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.dq-restart:hover { background: var(--brand-green-dark); }
 
 @media (max-width: 800px) {
   .daily-quiz { width: 100%; }
