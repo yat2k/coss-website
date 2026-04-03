@@ -1,0 +1,29 @@
+.eyesi-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.eyesi-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.eyesi-submit {
+  background: var(--brand-green);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.eyesi-submit:hover:not(:disabled) {
+  background: var(--brand-green-dark);
+}
+
+.eyesi-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

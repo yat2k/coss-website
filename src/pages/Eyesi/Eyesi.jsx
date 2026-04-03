@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './Eyesi.css'
 
 export default function Eyesi() {
   const [name, setName] = useState('')
@@ -33,12 +34,12 @@ export default function Eyesi() {
           <h3>Submit to Eyesi</h3>
           <p style={{ color: 'var(--muted)' }}>Short submissions are accepted; they will be sent to the society inbox once configured.</p>
 
-          <form onSubmit={handleSubmit} style={{ display:'grid', gap: '0.5rem' }}>
+          <form onSubmit={handleSubmit} className="eyesi-form">
             <input placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
             <input placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <textarea placeholder="Your submission" value={content} onChange={(e) => setContent(e.target.value)} rows={6} />
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button type="submit" disabled={!content || !name}>Send</button>
+            <div className="eyesi-actions">
+              <button className="eyesi-submit" type="submit" disabled={!content || !name}>Send</button>
               {status === 'sending' && <span>Sending…</span>}
               {status === 'sent' && <span style={{ color: 'green' }}>Sent — thank you!</span>}
               {status === 'failed' && <span style={{ color: 'crimson' }}>Failed to send. Please email the society directly.</span>}
