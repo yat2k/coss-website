@@ -106,6 +106,20 @@ export default function Events() {
 
   return (
     <section className="events container">
+      <div className="events-intro-note">
+        <p>
+          Open to all medical students: sign up{' '}
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSexh8AUTE2oQnO0miQc_Jsatsu7km8DVbC0By1jWjOLVBxNUg/viewform?usp=sharing&ouid=100344064518740497400"
+            target="_blank"
+            rel="noreferrer"
+          >
+            here
+          </a>{' '}
+          for our FREE Duke Elder Lecture series - led by top 20 rank holders in the 2025 exam!
+        </p>
+      </div>
+
       <div className="events-header">
         <h1>2026 Ophthalmology Events Calendar</h1>
         <p>Hover over highlighted dates to see event details. Click to visit the event website.</p>
@@ -118,7 +132,7 @@ export default function Events() {
       <div className="conference-signup">
         <h2>Attending a conference?</h2>
         <p>If you're planning to attend any of the conferences listed above, log in with your Cambridge email and add your CRSID to our attendance sheet - so other Cambridge students going to the same meeting can reach out.</p>
-        <a href="#" className="signup-link">Sign up here →</a>
+        <a href="https://docs.google.com/spreadsheets/d/1ymg_CaayTVk66uSac85zZSHCMXtCvmYY7WPFIx1jcf0/edit?usp=sharing" className="signup-link" target='_blank'>Sign up here →</a>
       </div>
     </section>
   )
