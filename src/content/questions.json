@@ -119,5 +119,401 @@
 		],
 		"answerId": "b",
 		"explanation": "Acute bacterial conjunctivitis is commonly treated with topical antibiotic drops as first-line therapy."
+	},
+	{
+		"id": 11,
+		"question": "Which visual field defect is most typical in early primary open-angle glaucoma?",
+		"choices": [
+			{ "id": "a", "text": "Central scotoma" },
+			{ "id": "b", "text": "Bitemporal hemianopia" },
+			{ "id": "c", "text": "Nasal step" },
+			{ "id": "d", "text": "Homonymous hemianopia" }
+		],
+		"answerId": "c",
+		"explanation": "A nasal step is a classic early glaucomatous defect caused by selective retinal nerve fibre damage."
+	},
+	{
+		"id": 12,
+		"question": "Which visual field pattern is classically seen in normal tension glaucoma?",
+		"choices": [
+			{ "id": "a", "text": "Inferior altitudinal defect" },
+			{ "id": "b", "text": "Central scotoma" },
+			{ "id": "c", "text": "Bitemporal hemianopia" },
+			{ "id": "d", "text": "Enlarged blind spot" }
+		],
+		"answerId": "a",
+		"explanation": "Normal tension glaucoma often produces focal paracentral or inferior altitudinal defects despite normal IOP."
+	},
+	{
+		"id": 13,
+		"question": "Which of the following is a risk factor for primary angle-closure glaucoma?",
+		"choices": [
+			{ "id": "a", "text": "Myopia" },
+			{ "id": "b", "text": "Shallow anterior chamber" },
+			{ "id": "c", "text": "Thick central cornea" },
+			{ "id": "d", "text": "Long axial length" }
+		],
+		"answerId": "b",
+		"explanation": "Shallow anterior chambers predispose to pupillary block and angle closure."
+	},
+	{
+		"id": 14,
+		"question": "The triad of congenital glaucoma includes which of the following?",
+		"choices": [
+			{ "id": "a", "text": "Photophobia, tearing, blepharospasm" },
+			{ "id": "b", "text": "Strabismus, ptosis, tearing" },
+			{ "id": "c", "text": "Nystagmus, photophobia, redness" },
+			{ "id": "d", "text": "Proptosis, tearing, headache" }
+		],
+		"answerId": "a",
+		"explanation": "The classic triad is photophobia, epiphora, and blepharospasm due to corneal oedema."
+	},
+	{
+		"id": 15,
+		"question": "Which sign is most suggestive of congenital glaucoma?",
+		"choices": [
+			{ "id": "a", "text": "Cherry-red spot" },
+			{ "id": "b", "text": "Haab striae" },
+			{ "id": "c", "text": "Kayser-Fleischer rings" },
+			{ "id": "d", "text": "Optic disc drusen" }
+		],
+		"answerId": "b",
+		"explanation": "Haab striae are breaks in Descemet's membrane caused by elevated IOP in infancy."
+	},
+	{
+		"id": 16,
+		"question": "Which is the most common cause of secondary open-angle glaucoma?",
+		"choices": [
+			{ "id": "a", "text": "Pseudoexfoliation" },
+			{ "id": "b", "text": "Uveitic glaucoma" },
+			{ "id": "c", "text": "Neovascular glaucoma" },
+			{ "id": "d", "text": "Pigment dispersion" }
+		],
+		"answerId": "a",
+		"explanation": "Pseudoexfoliation is a common cause because fibrillar material accumulates in the trabecular meshwork and blocks outflow."
+	},
+	{
+		"id": 17,
+		"question": "Which medication is first-line for lowering intraocular pressure in primary open-angle glaucoma?",
+		"choices": [
+			{ "id": "a", "text": "Atropine" },
+			{ "id": "b", "text": "Pilocarpine" },
+			{ "id": "c", "text": "Timolol" },
+			{ "id": "d", "text": "Prostaglandin analogues" }
+		],
+		"answerId": "d",
+		"explanation": "Prostaglandin analogues such as latanoprost are first-line because they are effective and usually dosed once daily."
+	},
+	{
+		"id": 18,
+		"question": "Which of the following would not cause a relative afferent pupillary defect?",
+		"choices": [
+			{ "id": "a", "text": "Glaucoma" },
+			{ "id": "b", "text": "Optic neuritis" },
+			{ "id": "c", "text": "Orbital cellulitis" },
+			{ "id": "d", "text": "Cataract" }
+		],
+		"answerId": "d",
+		"explanation": "Media opacities such as cataract do not cause a true RAPD."
+	},
+	{
+		"id": 19,
+		"question": "Which of the following is not a feature of Horner's pupil?",
+		"choices": [
+			{ "id": "a", "text": "Conjunctival injection" },
+			{ "id": "b", "text": "Mydriasis" },
+			{ "id": "c", "text": "Decreased IOP" },
+			{ "id": "d", "text": "Ptosis" }
+		],
+		"answerId": "b",
+		"explanation": "Horner syndrome causes miosis, not mydriasis, because of sympathetic denervation."
+	},
+	{
+		"id": 20,
+		"question": "A child presents with iris heterochromia. Which diagnosis is most likely?",
+		"choices": [
+			{ "id": "a", "text": "Congenital glaucoma" },
+			{ "id": "b", "text": "Retinoblastoma" },
+			{ "id": "c", "text": "Oculocutaneous albinism" },
+			{ "id": "d", "text": "Congenital Horner syndrome" }
+		],
+		"answerId": "d",
+		"explanation": "Iris heterochromia is a classic feature of congenital Horner syndrome because sympathetic innervation is needed for normal iris melanocyte development."
+	},
+	{
+		"id": 21,
+		"question": "A patient presents with bilateral sixth nerve palsy. Where is the most likely site of nerve compression?",
+		"choices": [
+			{ "id": "a", "text": "Cavernous sinus" },
+			{ "id": "b", "text": "Superior orbital fissure" },
+			{ "id": "c", "text": "Clivus" },
+			{ "id": "d", "text": "Lateral rectus muscle" }
+		],
+		"answerId": "c",
+		"explanation": "Bilateral CN VI palsy can be a false localising sign of raised intracranial pressure due to stretching along the clivus."
+	},
+	{
+		"id": 22,
+		"question": "Which condition most classically causes a cherry-red spot in the macula?",
+		"choices": [
+			{ "id": "a", "text": "Central retinal vein occlusion" },
+			{ "id": "b", "text": "Central retinal artery occlusion" },
+			{ "id": "c", "text": "Diabetic macular oedema" },
+			{ "id": "d", "text": "Hypertensive retinopathy" }
+		],
+		"answerId": "b",
+		"explanation": "CRAO causes retinal whitening with preserved foveal choroidal circulation, producing a cherry-red spot."
+	},
+	{
+		"id": 23,
+		"question": "The most common cause of a choroidal neovascular membrane in adults is:",
+		"choices": [
+			{ "id": "a", "text": "Pathologic myopia" },
+			{ "id": "b", "text": "Wet age-related macular degeneration" },
+			{ "id": "c", "text": "Ocular histoplasmosis" },
+			{ "id": "d", "text": "Angioid streaks" }
+		],
+		"answerId": "b",
+		"explanation": "Neovascular wet AMD is the leading cause of choroidal neovascularisation in older adults."
+	},
+	{
+		"id": 24,
+		"question": "A pale swollen optic disc with a relative afferent pupillary defect is most typical of:",
+		"choices": [
+			{ "id": "a", "text": "Papilledema" },
+			{ "id": "b", "text": "Acute ischemic optic neuropathy" },
+			{ "id": "c", "text": "Central retinal vein occlusion" },
+			{ "id": "d", "text": "Optic disc drusen" }
+		],
+		"answerId": "b",
+		"explanation": "Acute ischemic optic neuropathy typically presents with a pale swollen disc and RAPD."
+	},
+	{
+		"id": 25,
+		"question": "Fine keratic precipitates, iris heterochromia, and mild anterior uveitis point to which diagnosis?",
+		"choices": [
+			{ "id": "a", "text": "Fuchs heterochromic iridocyclitis" },
+			{ "id": "b", "text": "HLA-B27 uveitis" },
+			{ "id": "c", "text": "Posner-Schlossman syndrome" },
+			{ "id": "d", "text": "Sarcoid uveitis" }
+		],
+		"answerId": "a",
+		"explanation": "Fuchs heterochromic iridocyclitis classically presents with fine KPs, heterochromia, and relatively mild symptoms."
+	},
+	{
+		"id": 26,
+		"question": "Sudden painless central vision loss with a smoke-stack or ink-blot leak on angiography is typical of:",
+		"choices": [
+			{ "id": "a", "text": "Central serous chorioretinopathy" },
+			{ "id": "b", "text": "Optic neuritis" },
+			{ "id": "c", "text": "Dry age-related macular degeneration" },
+			{ "id": "d", "text": "Retinitis pigmentosa" }
+		],
+		"answerId": "a",
+		"explanation": "Central serous chorioretinopathy produces characteristic smoke-stack or ink-blot leakage patterns on angiography."
+	},
+	{
+		"id": 27,
+		"question": "What is the mechanism of action of anti-VEGF treatment for wet age-related macular degeneration?",
+		"choices": [
+			{ "id": "a", "text": "Reversing choroidal neovascularisation" },
+			{ "id": "b", "text": "Retarding neovascularisation" },
+			{ "id": "c", "text": "Inhibiting inflammatory cells that initiate neovascularisation" },
+			{ "id": "d", "text": "Stimulating normal vessel regeneration" }
+		],
+		"answerId": "b",
+		"explanation": "Anti-VEGF agents block VEGF signalling and slow the growth of abnormal new vessels."
+	},
+	{
+		"id": 28,
+		"question": "Brinzolamide lowers intraocular pressure primarily by which mechanism?",
+		"choices": [
+			{ "id": "a", "text": "Enhancement of uveoscleral outflow" },
+			{ "id": "b", "text": "Carbonic anhydrase inhibition in the ciliary processes" },
+			{ "id": "c", "text": "Relaxation of the trabecular meshwork" },
+			{ "id": "d", "text": "Selective alpha-2 agonism to reduce aqueous humour production" }
+		],
+		"answerId": "b",
+		"explanation": "Brinzolamide is a carbonic anhydrase inhibitor that reduces bicarbonate formation and therefore aqueous humour secretion."
+	},
+	{
+		"id": 29,
+		"question": "Vortex keratopathy is a well-established side effect of which drug?",
+		"choices": [
+			{ "id": "a", "text": "Hydroxychloroquine" },
+			{ "id": "b", "text": "Systemic corticosteroids" },
+			{ "id": "c", "text": "Allopurinol" },
+			{ "id": "d", "text": "Amiodarone" }
+		],
+		"answerId": "d",
+		"explanation": "Amiodarone is classically associated with vortex keratopathy."
+	},
+	{
+		"id": 30,
+		"question": "In low- and middle-income countries, the leading preventable cause of blindness is:",
+		"choices": [
+			{ "id": "a", "text": "Uncorrected refractive error" },
+			{ "id": "b", "text": "Glaucoma" },
+			{ "id": "c", "text": "Cataracts" },
+			{ "id": "d", "text": "Trachoma" }
+		],
+		"answerId": "c",
+		"explanation": "Cataracts remain the leading preventable cause of blindness in many low- and middle-income settings."
+	},
+	{
+		"id": 31,
+		"question": "In the UK, which of the following is a nationally organised population screening programme?",
+		"choices": [
+			{ "id": "a", "text": "Glaucoma screening for adults over 40" },
+			{ "id": "b", "text": "Cataract screening for adults over 60" },
+			{ "id": "c", "text": "Diabetic retinopathy screening for people over 12 with diabetes" },
+			{ "id": "d", "text": "Age-related macular degeneration screening for adults over 65" }
+		],
+		"answerId": "c",
+		"explanation": "Diabetic retinopathy screening is a nationally organised programme for eligible people with diabetes."
+	},
+	{
+		"id": 32,
+		"question": "Myopia is primarily caused by:",
+		"choices": [
+			{ "id": "a", "text": "Long axial length of the eye" },
+			{ "id": "b", "text": "Short axial length of the eye" },
+			{ "id": "c", "text": "Uneven corneal curvature" },
+			{ "id": "d", "text": "Age-related hardening of the lens" }
+		],
+		"answerId": "a",
+		"explanation": "Long axial length causes light to focus in front of the retina, producing myopia."
+	},
+	{
+		"id": 33,
+		"question": "Which layer of the conjunctiva contains goblet cells?",
+		"choices": [
+			{ "id": "a", "text": "Stratified squamous epithelium" },
+			{ "id": "b", "text": "Substantia propria" },
+			{ "id": "c", "text": "Episcleral tissue" },
+			{ "id": "d", "text": "Stratified columnar epithelium" }
+		],
+		"answerId": "d",
+		"explanation": "Goblet cells are found in the stratified columnar conjunctival epithelium and secrete mucin."
+	},
+	{
+		"id": 34,
+		"question": "What is the most common causative organism of bacterial conjunctivitis in adults?",
+		"choices": [
+			{ "id": "a", "text": "Neisseria gonorrhoeae" },
+			{ "id": "b", "text": "Streptococcus pneumoniae" },
+			{ "id": "c", "text": "Staphylococcus aureus" },
+			{ "id": "d", "text": "Haemophilus influenzae" }
+		],
+		"answerId": "c",
+		"explanation": "Staphylococcus aureus is the most common bacterial cause of conjunctivitis in adults."
+	},
+	{
+		"id": 35,
+		"question": "Which clinical feature is most characteristic of viral conjunctivitis?",
+		"choices": [
+			{ "id": "a", "text": "Purulent discharge" },
+			{ "id": "b", "text": "Tender preauricular lymphadenopathy" },
+			{ "id": "c", "text": "Symblepharon" },
+			{ "id": "d", "text": "Shield ulcer" }
+		],
+		"answerId": "b",
+		"explanation": "Tender preauricular lymphadenopathy is classically associated with viral conjunctivitis, especially adenoviral infection."
+	},
+	{
+		"id": 36,
+		"question": "What are the intracytoplasmic inclusion bodies seen in Chlamydia trachomatis conjunctivitis called?",
+		"choices": [
+			{ "id": "a", "text": "Cowdry bodies" },
+			{ "id": "b", "text": "Negri bodies" },
+			{ "id": "c", "text": "Basophilic intracytoplasmic bodies" },
+			{ "id": "d", "text": "Guarnieri bodies" }
+		],
+		"answerId": "c",
+		"explanation": "Giemsa staining reveals basophilic intracytoplasmic inclusion bodies in chlamydial conjunctivitis."
+	},
+	{
+		"id": 37,
+		"question": "At what age does neonatal conjunctivitis caused by Chlamydia trachomatis typically present?",
+		"choices": [
+			{ "id": "a", "text": "First 24 hours" },
+			{ "id": "b", "text": "First week" },
+			{ "id": "c", "text": "1-3 weeks" },
+			{ "id": "d", "text": "3-4 weeks" }
+		],
+		"answerId": "c",
+		"explanation": "Chlamydial ophthalmia neonatorum usually presents at 1-3 weeks of age."
+	},
+	{
+		"id": 38,
+		"question": "What is the characteristic histological feature of vernal keratoconjunctivitis?",
+		"choices": [
+			{ "id": "a", "text": "Neutrophil infiltration" },
+			{ "id": "b", "text": "Plasma cell infiltration" },
+			{ "id": "c", "text": "Eosinophil infiltration" },
+			{ "id": "d", "text": "Multinucleated giant cells" }
+		],
+		"answerId": "c",
+		"explanation": "Vernal keratoconjunctivitis is characterised by eosinophil-rich inflammation."
+	},
+	{
+		"id": 39,
+		"question": "Which HLA allele shows a strong association with mucous membrane pemphigoid?",
+		"choices": [
+			{ "id": "a", "text": "HLA-DQB1" },
+			{ "id": "b", "text": "HLA-B27" },
+			{ "id": "c", "text": "HLA-A2" },
+			{ "id": "d", "text": "HLA-B51" }
+		],
+		"answerId": "a",
+		"explanation": "HLA-DQB1 is strongly associated with ocular cicatricial and related forms of pemphigoid."
+	},
+	{
+		"id": 40,
+		"question": "What is the WHO classification grade for trachoma when there is easily visible tarsal scarring but no trichiasis?",
+		"choices": [
+			{ "id": "a", "text": "TF" },
+			{ "id": "b", "text": "TT" },
+			{ "id": "c", "text": "TI" },
+			{ "id": "d", "text": "TS" }
+		],
+		"answerId": "d",
+		"explanation": "TS stands for trachomatous scarring and refers to visible tarsal scarring without trichiasis."
+	},
+	{
+		"id": 41,
+		"question": "On examination of an infant, which feature most strongly supports pseudostrabismus rather than true strabismus?",
+		"choices": [
+			{ "id": "a", "text": "Asymmetrical corneal light reflexes on primary gaze" },
+			{ "id": "b", "text": "Presence of an abnormal angle on Hirschberg testing" },
+			{ "id": "c", "text": "Wide nasal bridge and prominent epicanthal folds" },
+			{ "id": "d", "text": "Persistent asymmetrical cover test with refixation movement" }
+		],
+		"answerId": "c",
+		"explanation": "Pseudostrabismus is commonly caused by facial anatomy such as a broad nasal bridge or prominent epicanthal folds."
+	},
+	{
+		"id": 42,
+		"question": "A teenager has intermittent exotropia that is more frequent when tired or ill and is controlled by fusion most of the day. What is the most appropriate initial management?",
+		"choices": [
+			{ "id": "a", "text": "Bilateral lateral rectus recession surgery" },
+			{ "id": "b", "text": "Prism correction for constant large-angle exotropia" },
+			{ "id": "c", "text": "Botulinum toxin injection into the lateral rectus" },
+			{ "id": "d", "text": "Observation with orthoptic exercises and part-time occlusion" }
+		],
+		"answerId": "d",
+		"explanation": "Well-controlled intermittent exotropia is usually managed conservatively first, with observation and orthoptic measures."
+	},
+	{
+		"id": 43,
+		"question": "How is isolated unilateral overelevation in adduction surgically managed in more severe cases?",
+		"choices": [
+			{ "id": "a", "text": "Inferior oblique recession" },
+			{ "id": "b", "text": "Inferior oblique anterior or anterior nasal transposition" },
+			{ "id": "c", "text": "Superior oblique tuck" },
+			{ "id": "d", "text": "Superior rectus recession" }
+		],
+		"answerId": "b",
+		"explanation": "Anterior or anterior nasal transposition of the inferior oblique is used in more severe cases of overelevation in adduction."
 	}
 ]

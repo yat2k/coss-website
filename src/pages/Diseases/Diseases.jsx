@@ -12,7 +12,7 @@ export default function Diseases() {
       <p>Each week we spotlight a different ophthalmic condition - covering pathophysiology, clinical presentation, investigation, and management. Want to write an article? It's a great way to consolidate your learning and contribute to the community.</p>
       
       <div style={{ marginBottom: '2rem' }}>
-        <a href="#signup" className="cta-link">
+        <a href="mailto:cambridgeophthsoc@gmail.com" target="_blank" rel="noopener noreferrer" className="cta-link">
           Contribute a disease →
         </a>
       </div>
