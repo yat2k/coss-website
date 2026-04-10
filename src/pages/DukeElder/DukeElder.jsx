@@ -3,8 +3,8 @@ import './DukeElder.css'
 
 export default function DukeElder() {
   return (
-    <section className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '1rem' }}>
-      <div>
+    <section className="container dukeElder-container">
+      <div className="dukeElder-content">
         <h2>Duke Elder Resources</h2>
         
         <article className="card">
@@ -29,7 +29,7 @@ export default function DukeElder() {
         </article>
       </div>
 
-      <aside>
+      <aside className="dukeElder-quiz">
         <DailyQuiz />
       </aside>
     </section>
