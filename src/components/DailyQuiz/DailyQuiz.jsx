@@ -304,7 +304,7 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
         ) : (
           <div className="dq-summary">
             <p>Your score: {score} / {daily.length}</p>
-            <div className="dq-streak-badge">🔥 Streak: <span className="dq-streak-number">{streak}</span></div>
+            <div className="dq-streak-badge">&#128293; Streak: <span className="dq-streak-number">{streak}</span></div>
             <button className="dq-restart" onClick={() => {
               restart()
               setAnswers(Array(daily.length).fill(null))

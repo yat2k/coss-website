@@ -10,10 +10,10 @@ export default function Blog() {
     <section className="container">
       <h2>COSS Blog</h2>
       <p>This space is for Cambridge ophthalmology students, by Cambridge ophthalmology students. Have an interesting case, a reflection on a placement, or thoughts on a career in ophthalmology? We'd love to hear from you.</p>
-      
+
       <div style={{ marginBottom: '2rem' }}>
         <a href="mailto:cambridgeophthsoc@gmail.com" target="_blank" rel="noopener noreferrer" className="cta-link">
-          Write for us →
+          Write for us &rarr;
         </a>
       </div>
       {/* TODO: Implement blog post display */}

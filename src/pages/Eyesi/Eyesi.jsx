@@ -40,8 +40,8 @@ export default function Eyesi() {
             <textarea placeholder="Your submission" value={content} onChange={(e) => setContent(e.target.value)} rows={6} />
             <div className="eyesi-actions">
               <button className="eyesi-submit" type="submit" disabled={!content || !name}>Send</button>
-              {status === 'sending' && <span>Sending…</span>}
-              {status === 'sent' && <span style={{ color: 'green' }}>Sent — thank you!</span>}
+              {status === 'sending' && <span>Sending...</span>}
+              {status === 'sent' && <span style={{ color: 'green' }}>Sent - thank you!</span>}
               {status === 'failed' && <span style={{ color: 'crimson' }}>Failed to send. Please email the society directly.</span>}
             </div>
           </form>
