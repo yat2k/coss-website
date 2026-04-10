@@ -31,7 +31,6 @@ function trackAnalyticsEvent(eventType, page, data = {}) {
   }
 }
 
-// Use the first five questions from the content pool
 const DAILY_COUNT = 5
 const STREAK_KEY = 'coss_daily_quiz_streak'
 const UK_TIME_ZONE = 'Europe/London'
@@ -52,6 +51,42 @@ function addDaysToDateKey(dateKey, days) {
   const utcDate = new Date(Date.UTC(year, month - 1, day))
   utcDate.setUTCDate(utcDate.getUTCDate() + days)
   return getUkDateKey(utcDate)
+}
+
+function hashStringToSeed(value) {
+  let hash = 1779033703
+
+  for (let i = 0; i < value.length; i++) {
+    hash = Math.imul(hash ^ value.charCodeAt(i), 3432918353)
+    hash = (hash << 13) | (hash >>> 19)
+  }
+
+  return hash >>> 0
+}
+
+function createSeededRandom(seed) {
+  let state = seed || 1
+
+  return function seededRandom() {
+    state = (state + 0x6D2B79F5) >>> 0
+    let t = Math.imul(state ^ (state >>> 15), 1 | state)
+    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+function getDailyQuestionSet(pool, dateKey) {
+  if (pool.length <= DAILY_COUNT) return pool
+
+  const seededRandom = createSeededRandom(hashStringToSeed(dateKey))
+  const shuffled = [...pool]
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(seededRandom() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+
+  return shuffled.slice(0, DAILY_COUNT)
 }
 
 function loadStreakFromStorage() {
@@ -93,8 +128,9 @@ function getResolvedStreak(stored, today = getUkDateKey()) {
 }
 
 export default function DailyQuiz({ questionData, topOffset = 0 }) {
+  const [todayKey, setTodayKey] = useState(() => getUkDateKey())
   const pool = questionData ? [questionData] : allQuestions || []
-  const daily = pool.slice(0, DAILY_COUNT)
+  const daily = questionData ? pool : getDailyQuestionSet(pool, todayKey)
 
   const [index, setIndex] = useState(0)
   const [score, setScore] = useState(0)
@@ -134,6 +170,7 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
       const stored = loadStreakFromStorage()
       const resolved = getResolvedStreak(stored, today)
 
+      setTodayKey(today)
       setStreak(resolved.streak)
       setStreakUpdatedThisSession(resolved.isTodayComplete)
 
@@ -165,11 +202,13 @@ export default function DailyQuiz({ questionData, topOffset = 0 }) {
   }, [daily.length])
 
   useEffect(() => {
-    // reset if questionData changes or pool changes
+    // reset if the source question changes or the daily set rolls over
     setIndex(0)
     setScore(0)
     setFinished(false)
-  }, [questionData])
+    setAnsweredQuestions(new Set())
+    setQuizStarted(false)
+  }, [questionData, todayKey])
 
   const q = daily[index]
   const isCurrentQuestionAnswered = answeredQuestions.has(index)
