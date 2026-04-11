@@ -10,6 +10,7 @@ import EventPage from './pages/EventPage/EventPage'
 import Resources from './pages/Resources/Resources'
 import Contact from './pages/Contact/Contact'
 import Blog from './pages/Blog/Blog'
+import BlogArticle from './pages/Blog/BlogArticle'
 import Diseases from './pages/Diseases/Diseases'
 import OSCE from './pages/OSCE/OSCE'
 import DukeElder from './pages/DukeElder/DukeElder'
@@ -61,6 +62,7 @@ function AppContent() {
           <Route path="/events/:id" element={<EventPage />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/resources/blog" element={<Blog />} />
+          <Route path="/resources/blog/:slug" element={<BlogArticle />} />
           <Route path="/resources/diseases" element={<Diseases />} />
           <Route path="/resources/osce" element={<OSCE />} />
           <Route path="/resources/duke-elder" element={<DukeElder />} />

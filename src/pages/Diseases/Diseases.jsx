@@ -1,7 +1,7 @@
 import './Diseases.css'
 
 const sample = [
-  { id: 1, title: 'Diabetic Retinopathy — overview', date: '2025-11-24' },
+  { id: 1, title: 'Diabetic Retinopathy - overview', date: '2025-11-24' },
   { id: 2, title: 'Glaucoma screening tips', date: '2025-11-17' },
 ]
 
@@ -10,13 +10,13 @@ export default function Diseases() {
     <section className="container">
       <h2>Diseases of the Week</h2>
       <p>Each week we spotlight a different ophthalmic condition - covering pathophysiology, clinical presentation, investigation, and management. Want to write an article? It's a great way to consolidate your learning and contribute to the community.</p>
-      
+
       <div style={{ marginBottom: '2rem' }}>
         <a href="mailto:cambridgeophthsoc@gmail.com" target="_blank" rel="noopener noreferrer" className="cta-link">
-          Contribute a disease →
+          Contribute a disease &rarr;
         </a>
       </div>
-{/* TODO: Implement disease post display */}
+      {/* TODO: Implement disease post display */}
       {/* <div style={{ display: 'grid', gap: '1rem' }}>
         {sample.map((s) => (
           <article key={s.id} className="card">

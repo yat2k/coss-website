@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 1rem;
+  align-items: start;
 }
 
 .dukeElder-resource-list {
@@ -42,5 +43,18 @@
 @media (max-width: 768px) {
   .dukeElder-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .dukeElder-quiz {
+    order: -1;
+  }
+
+  .dukeElder-quiz .daily-quiz {
+    margin-top: 0;
+  }
+
+  .dukeElder-content {
+    min-width: 0;
   }
 }

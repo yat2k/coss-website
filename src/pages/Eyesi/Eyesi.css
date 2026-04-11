@@ -1,29 +1,79 @@
-.eyesi-form {
+.eyesi-content {
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.eyesi-actions {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
+.eyesi-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
 }
 
-.eyesi-submit {
-  background: var(--brand-green);
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+.eyesi-cta {
+  margin-top: 1.5rem;
 }
 
-.eyesi-submit:hover:not(:disabled) {
-  background: var(--brand-green-dark);
+.eyesi-fees {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.eyesi-submit:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.eyesi-fees-header {
+  padding: 0.85rem 1rem;
+  background: rgba(0, 120, 70, 0.08);
+  font-weight: 700;
+}
+
+.eyesi-fees-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.eyesi-fees-grid div {
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.eyesi-fees-grid div + div {
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.eyesi-fees-grid--header div {
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 640px) {
+  .eyesi-fees-grid--header {
+    display: none;
+  }
+
+  .eyesi-fees-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eyesi-fees-grid:not(.eyesi-fees-grid--header) {
+    padding: 0.35rem 0;
+  }
+
+  .eyesi-fees-grid div {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .eyesi-fees-grid div::before {
+    content: attr(data-label);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .eyesi-fees-grid div + div {
+    border-left: none;
+  }
 }
